@@ -20,7 +20,7 @@ namespace _2024._11._26.elektron
         }
         void Start()
         {
-            electronTimer.Interval = 30;
+            electronTimer.Interval = 100;
             AddEvents();
             electronTimer.Start();
             electronTimer.Tick += ElectronSpeed;
@@ -51,7 +51,7 @@ namespace _2024._11._26.elektron
             //  felfelé megy
             if (iranyX == 0 && iranyY == -1)
             {
-                if (elektron.Top > FentiKabel.Top - 2)
+                if (elektron.Top > FentiKabel.Top + voltSize)
                 {
                     elektron.Top -= voltSize;
                 }
@@ -66,7 +66,7 @@ namespace _2024._11._26.elektron
             //  lefelé megy
             else if (iranyX == 0 && iranyY == 1)
             {
-                if (elektron.Top < LentiKabel.Bottom - elektron.Height + 2)
+                if (elektron.Top < LentiKabel.Bottom - elektron.Height - voltSize)
                 {
                     elektron.Top += voltSize;
                 }
@@ -80,7 +80,7 @@ namespace _2024._11._26.elektron
             //  balra megy
             else if (iranyX == -1 && iranyY == 0)
             {
-                if (elektron.Left > FentiKabel.Left - 2)
+                if (elektron.Left > FentiKabel.Left + voltSize)
                 {
                     elektron.Left -= voltSize;
                 }
@@ -96,10 +96,10 @@ namespace _2024._11._26.elektron
             //  jobbra megy
             else if (iranyX == 1 && iranyY == 0)
             {
-                if (elektron.Left < JobbKabel.Right - elektron.Width + 2)
+                if (elektron.Left < JobbKabel.Right - elektron.Width - voltSize)
                 {
                     elektron.Left += voltSize;
-                    if (elektron.Left >= LentiKabel.Right - 2)
+                    if (elektron.Left >= LentiKabel.Right + 2)
                     {
                         elektron.Visible = false;
                     }
